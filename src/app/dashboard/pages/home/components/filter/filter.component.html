@@ -1,0 +1,36 @@
+<div class="container-filter">
+    <mat-form-field class="select-year" appearance="outline">
+        <mat-label class="select-year">Selecciona un año</mat-label>
+        <mat-select class="select-year" [(value)]="selectedYear">
+          <mat-option *ngFor="let year of years" [value]="year">
+            {{ year }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    <div class="month-slider">
+        <!-- Botón para navegar a la izquierda -->
+        <button (click)="previousMonth()">&lt;</button>
+      
+       <!-- Contenedor de los meses -->
+        <div class="months-container">
+            <!-- Iterar meses usando @for -->
+            @for (month of visibleMonths; track $index) {
+            <div 
+                [class.selected]="isSelected(month)"
+                (click)="selectMonth(month)">
+                {{ month }}
+            </div>
+            }
+        </div>
+      
+        <!-- Botón para navegar a la derecha -->
+        <button (click)="nextMonth()">&gt;</button>
+      </div>
+      <div class="container-download">
+        <button class="btn download">
+            <p>Descargar reporte</p>
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="download"></mat-icon>
+ 
+        </button>
+      </div>
+</div>

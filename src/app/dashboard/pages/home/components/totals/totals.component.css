@@ -1,0 +1,40 @@
+.container-totals{
+    /* display: flex;
+    justify-content: space-between;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    padding: 15px; */
+}
+
+ .total-box {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    height: 100%; 
+    text-align: center; 
+    background-color: #8939da;
+    width: 100%;
+    
+  } 
+
+
+  .total-box span {
+    font-size: 24px; /* Ajusta el tamaño del texto según sea necesario */
+    font-weight: bold; /* Resalta el número */
+  }
+  
+  .total-box h3 {
+    margin: 10px 0 0; /* Ajusta los márgenes para separar el título del número */
+    border-bottom: 1px solid #b08fcf;
+    color: #b08fcf;
+    font-weight: bold;
+  }
+
+  .total-box mat-icon{
+    width: auto;
+    height: auto;
+    font-size: 50px;
+    padding-bottom: 7px;
+  }

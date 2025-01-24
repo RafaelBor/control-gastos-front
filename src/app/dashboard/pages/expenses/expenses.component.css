@@ -1,0 +1,44 @@
+.expenses-header{
+    display: flex;
+    align-items: center;
+}
+
+.expenses-header mat-form-field{
+    margin-right: 10px;
+}
+
+mat-card-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+mat-card{
+    background-color: #8939da;
+}
+
+button{
+    background-color: #8939da !important;
+}
+
+@media (max-width: 576px) {
+    .expenses-header{
+        display: block;
+
+    }
+
+    .expenses-header mat-form-field{
+        width: 100%;
+        margin-bottom: 0px;
+    }
+
+    button{
+        width: 100%;
+        margin-top: 0px;
+    }
+  }

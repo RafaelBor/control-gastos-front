@@ -1,0 +1,78 @@
+<div class="container-general expenses-header">
+    <mat-form-field appearance="outline">
+        <mat-label>Seleccionar fecha</mat-label>
+        <input matInput [matDatepicker]="picker">
+        
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      
+        <button mat-raised-button (click)="addExpense()">Registrar gasto</button>
+      
+</div>
+
+<div class="container-general mt-3">
+   <div class="row">
+    <div class="col-12 col-md-3 mb-2">
+        <mat-card appearance="outlined">
+            <mat-card-header>
+                <mat-card-title>Restaurantes</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>20/01/2025</p>
+                <p class="price">350$</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>Actualizar</button>
+                <button mat-button>Eliminar</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-12 col-md-3 mb-2">
+        <mat-card appearance="outlined">
+            <mat-card-header>
+                <mat-card-title>Gasolina</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>20/01/2025</p>
+                <p class="price">350$</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>Actualizar</button>
+                <button mat-button>Eliminar</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-12 col-md-3 mb-2">
+        <mat-card appearance="outlined">
+            <mat-card-header>
+                <mat-card-title>Despensa</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>20/01/2025</p>
+                <p class="price">350$</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>Actualizar</button>
+                <button mat-button>Eliminar</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-12 col-md-3 mb-2">
+        <mat-card appearance="outlined">
+            <mat-card-header>
+                <mat-card-title>Restaurantes</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>20/01/2025</p>
+                <p class="price">350$</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>Actualizar</button>
+                <button mat-button>Eliminar</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+   </div>
+</div>

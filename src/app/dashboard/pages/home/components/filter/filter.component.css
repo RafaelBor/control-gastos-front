@@ -1,0 +1,108 @@
+.container-filter{
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.month-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 40%;
+  }
+  
+  .month-slider button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .month-slider button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .months-container {
+    display: flex;
+    gap: 15px;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .months-container div {
+    padding: 10px 20px;
+    background-color: #b08fcf;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+    width: 100%;
+  }
+  
+  .months-container div.selected {
+    background-color: #8639e4;;
+    color: #b08fcf;
+    font-weight: bold;
+  }
+
+  button{
+    background-color: #8939da !important;
+  }
+
+  .select-year{
+    color: #8639e4 !important;
+  }
+
+  .download{
+    display: flex;
+    align-items: center;
+  }
+  .download p{
+    color: #1e1e22;
+    font-weight: bold;
+    margin: 0px;
+  }
+
+  mat-form-field{
+    padding: 0px;
+    margin: 0px !important;
+  }
+
+  @media (max-width: 576px) {
+    .container-filter {
+      display: block;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .download {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .container-download{
+      margin: 10px;
+    }
+
+    .month-slider{
+      width: 100%;
+    }
+
+    .months-container {
+      width: 100%;
+      text-align: center;
+    }
+
+    .months-container div{
+      text-align: center;
+    }
+  }
+
+  

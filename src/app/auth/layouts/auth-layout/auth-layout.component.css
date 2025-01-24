@@ -1,0 +1,10 @@
+
+.layout-container{
+    position: absolute;
+  
+    height: 100%;
+    width: 100%;
+
+    background: radial-gradient(125% 125% at 50% 10%, #1e1e22 40%, #8639e4 100%);
+}
+

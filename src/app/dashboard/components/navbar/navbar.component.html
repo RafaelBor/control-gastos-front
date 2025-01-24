@@ -1,0 +1,26 @@
+<!-- <div class="navbar">
+   <div class="menu">
+    <p>Gastos</p>
+    <p>afasfasf</p>
+   </div>
+
+   <div class="profile">
+        <p>Rafael Borbon</p>
+   </div>
+</div> -->
+
+<mat-toolbar class="navbar">
+   <div class="profile">
+      <button class="icon-profile" mat-mini-fab>
+         <mat-icon>menu</mat-icon>
+       </button>
+      <p>Rafael Borbon</p>
+   </div>
+
+   <div class="menu">
+      <button  mat-raised-button [routerLink]="['/dashboard/home']" routerLinkActive="router-link-active" >Inicio</button>
+      <button [routerLink]="['/dashboard/expenses']" routerLinkActive="router-link-active" mat-raised-button>Gastos</button>
+      <button [routerLink]="['/dashboard/salary']" routerLinkActive="router-link-active" mat-raised-button>Sueldo</button>
+     </div>
+  
+ </mat-toolbar>

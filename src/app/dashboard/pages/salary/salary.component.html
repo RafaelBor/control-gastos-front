@@ -1,0 +1,55 @@
+<div class="container-general">
+    <div class="row">
+        <p>Ingresa un salario mensual fijo, este servira para hacer calculos en tus reportes y gastos mes tras mes, puedes modificar el salario fijo 
+        </p>
+        <div class=" col-12 col-md-5">
+            <mat-form-field appearance="fill">
+                <mat-label>Salario Mensual Fijo:</mat-label>
+                <input matInput>
+            </mat-form-field>
+        </div>
+        <div>
+            <button mat-flat-button>Guardar</button>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <p>Si necesitas incrementar o reducir el salario en un mes en especifico</p>
+        <div class="col-12 col-md-6">
+            <mat-form-field>
+                <mat-label>Seleccionar año</mat-label>
+                <mat-select>
+                  <mat-option value="one">First option</mat-option>
+                  <mat-option value="two">Second option</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <mat-form-field>
+                <mat-label>Seleccionar mes</mat-label>
+                <mat-select>
+                  <mat-option value="one">First option</mat-option>
+                  <mat-option value="two">Second option</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+
+        <div class=" col-12 col-md-6">
+            <mat-form-field appearance="fill">
+                <mat-label>Cantidad:</mat-label>
+                <input matInput>
+            </mat-form-field>
+
+        </div>
+        <div class=" col-12 col-md-6">
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1">Aumentar</mat-radio-button>
+                <mat-radio-button value="2">Restar</mat-radio-button>
+              </mat-radio-group>
+        </div>
+        <div>
+            <button mat-flat-button>Guardar</button>
+        </div>
+    </div>
+</div>
