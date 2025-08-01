@@ -1,7 +1,14 @@
-<app-navbar />
+<app-navbar [user]="user" />
 <div class="container">
     <div class="container-title">
-        <h1>GastosApp</h1>
+        <div class="logo-container">
+        <img src="../../../../assets/logoApp.png" alt="Miauhorros Logo" class="logo-img">
+         <div class="mb-3">
+        <h1 class="brand-title">
+          Miau<span class="brand-accent">HORROS</span>
+        </h1>
+      </div>
+        </div>
     </div>
     <div>
         <router-outlet />

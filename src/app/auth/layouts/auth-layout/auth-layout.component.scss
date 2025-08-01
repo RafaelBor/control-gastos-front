@@ -1,0 +1,132 @@
+
+/* .layout-container{
+    position: absolute;
+  
+    height: 100%;
+    width: 100%;
+
+    background: radial-gradient(125% 125% at 50% 10%, #1e1e22 40%, #8639e4 100%);
+} */
+
+/* .layout-container{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom right, #1e1e22, #8639e4);
+}
+
+.wrap-login100 {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+} */
+
+
+.layout-container {
+  min-height: 100vh;
+  background: #111827;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  position: relative;
+  overflow: hidden;
+
+  // Efectos de fondo adicionales
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(147, 51, 234, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  // Contenedor principal
+  .container-login100 {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .wrap-login100 {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 28rem;
+  }
+}
+
+// Top navigation para el layout
+.layout-container .top-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  .nav-toolbar {
+    background: rgba(31, 41, 55, 0.5);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(75, 85, 99, 0.5);
+    color: #d1d5db;
+
+    .nav-icon {
+      color: #9ca3af;
+    }
+
+    .nav-title {
+      font-weight: 500;
+    }
+
+    .spacer {
+      flex: 1 1 auto;
+    }
+  }
+}
+
+// Bottom decoration para el layout
+.layout-container .bottom-decoration {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+
+  .decoration-dots {
+    display: flex;
+    gap: 0.5rem;
+
+    .dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      
+      &.dot-1 {
+        background: rgba(139, 92, 246, 0.5);
+      }
+      
+      &.dot-2 {
+        background: rgba(139, 92, 246, 0.75);
+      }
+      
+      &.dot-3 {
+        background: #8b5cf6;
+      }
+    }
+  }
+}
+
+
+

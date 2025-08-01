@@ -1,0 +1,21 @@
+
+<div class="container-general">
+    <div class="container-title">
+        <p>Lista de gastos</p>
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-list role="list">
+        @for (expense of expenses(); track $index) {
+            <div class="category">
+                <mat-list-item class="prueba" role="listitem">
+                    {{expense.categoryName}}
+                </mat-list-item>
+                <p class="total-expense">${{expense.totalExpense | number:'1.2-2'}}</p>
+            </div>
+        }
+      </mat-list>
+
+    
+</div>
+

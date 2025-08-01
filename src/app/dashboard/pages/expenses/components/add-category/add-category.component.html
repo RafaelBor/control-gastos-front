@@ -1,0 +1,40 @@
+
+<div class="contenedor-modal">
+    <mat-dialog-content>
+        <h2>Agregar o editar categorias</h2>
+        <form [formGroup]="categoryForm" class="mb-3">
+            <div class=" row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Categoria: </mat-label>
+                    <input placeholder="Escribe el nombre de la categoria" matInput formControlName="name"  />
+                </mat-form-field>
+
+                <button mat-button [disabled]="categoryForm.invalid" (click)="sendCategory()">Guardar</button>
+                @if (selectedCategory) {
+                  <button class="mt-2" mat-button (click)="resetForm()">Cancelar edición</button>
+                }
+               
+            </div>
+        </form>
+
+        <div class="container-categories">
+            <p>Lista de categorias</p>
+            <mat-list>
+                @for (category of categories; track $index) {
+                <mat-list-item class="d-flex justify-content-between align-content-center">
+                       <div class="d-flex justify-content-between align-items-center w-100">
+                            <span>{{ category.name }}</span>
+                            <mat-icon fontIcon="edit" (click)="editCategory(category)"></mat-icon>
+                       </div>
+                </mat-list-item>
+                }
+          
+            </mat-list>
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cerrar</button>
+    </mat-dialog-actions>
+</div>
+

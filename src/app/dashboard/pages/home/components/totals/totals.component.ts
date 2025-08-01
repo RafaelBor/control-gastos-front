@@ -1,21 +1,25 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, input, OnInit } from '@angular/core';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
+import { Month } from '../../interfaces/month.interface';
+import { CommonModule } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-totals',
   standalone: true,
-  imports: [MatGridListModule, MatIconModule],
+  imports: [MatGridListModule, MatIconModule, CommonModule],
   templateUrl: './totals.component.html',
   styleUrl: './totals.component.css'
 })
 export class TotalsComponent implements OnInit {
   gridCols: number = 3
   rowHeight: string = '2:1';
+  public month = input<Month | null >();
 
   ngOnInit(): void {
+    console.log('mno', this.month)
     this.adjustGrid(window.innerWidth);
   }
 

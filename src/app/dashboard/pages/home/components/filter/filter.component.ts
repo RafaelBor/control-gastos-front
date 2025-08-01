@@ -1,5 +1,6 @@
+import { months } from './../../../../../commons/utils/months_list';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, output } from '@angular/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
@@ -14,12 +15,17 @@ import {MatIconModule} from '@angular/material/icon';
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.css'
 })
-export class FilterComponent {
+export class FilterComponent implements OnInit {
 
-  months: string[] = [
-    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
-    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-  ];
+  
+  onSendDataFilter = output<any>();
+  onOpenDownload = output();
+  // months: string[] = [
+  //   'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
+  //   'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  // ];
+
+  months = months;
   visibleMonths: string[] = []; // Meses visibles
   currentIndex: number = 0; // Índice del primer mes visible
   selectedMonth: string  | null = null;; // Índice del mes seleccionado
@@ -29,15 +35,20 @@ export class FilterComponent {
   constructor() {
     this.initializeVisibleMonths();
     this.setCurrentMonth(); // Seleccionar el mes actual al cargar
-    this.generateYears(50);
+    this.generateYears(20);
     this.selectedYear = new Date().getFullYear(); // Establecer el año actual como seleccionado por defecto
+  }
 
+  ngOnInit(): void {
+    this.onSendDataFilter.emit({
+      month: this.selectedMonth,
+      year: this.selectedYear
+    })
   }
 
   generateYears(totalYears: number): void {
     const currentYear = new Date().getFullYear();
     this.years = Array.from({ length: totalYears }, (_, i) => currentYear - i);
-
   }
 
   initializeVisibleMonths() {
@@ -67,10 +78,25 @@ export class FilterComponent {
 
   selectMonth(month: string) {
     this.selectedMonth = month;
-    console.log(`Selected month: ${this.selectedMonth}`);
+    this.onSendDataFilter.emit({
+      month: this.selectedMonth,
+      year: this.selectedYear
+    })
   }
 
   isSelected(month: string): boolean {
     return this.selectedMonth === month;
+  }
+
+  changeYear(){
+    this.onSendDataFilter.emit({
+      month: this.selectedMonth,
+      year: this.selectedYear
+    })
+  }
+
+
+  openDownload(){
+    this.onOpenDownload.emit()
   }
 }

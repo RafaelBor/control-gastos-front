@@ -1,0 +1,14 @@
+body{
+    background-color: #1e1e22 !important;
+}
+
+h2{
+    padding-bottom: 0px !important;
+}
+.contenedor-modal{
+    background-color: #b089d8 !important; 
+}
+
+.month-picker .mat-calendar-body-cell-content {
+    display: none !important;
+  }

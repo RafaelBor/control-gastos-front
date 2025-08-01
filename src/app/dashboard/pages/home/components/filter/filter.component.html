@@ -1,7 +1,7 @@
 <div class="container-filter">
     <mat-form-field class="select-year" appearance="outline">
         <mat-label class="select-year">Selecciona un año</mat-label>
-        <mat-select class="select-year" [(value)]="selectedYear">
+        <mat-select class="select-year" (selectionChange)="changeYear()" [(value)]="selectedYear">
           <mat-option *ngFor="let year of years" [value]="year">
             {{ year }}
           </mat-option>
@@ -27,7 +27,7 @@
         <button (click)="nextMonth()">&gt;</button>
       </div>
       <div class="container-download">
-        <button class="btn download">
+        <button class="btn download" (click)="openDownload()">
             <p>Descargar reporte</p>
             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="download"></mat-icon>
  

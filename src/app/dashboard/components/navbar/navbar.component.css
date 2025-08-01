@@ -1,6 +1,6 @@
 
 .navbar {
-    background-color: #1e1e22;
+    background-color: #111827;
     align-items: center;
     display: flex;
     justify-content: space-between; 
@@ -29,6 +29,12 @@
     align-items: center;
 }
 
+.profile-menu{
+    margin: 0px;
+    padding: 0px;
+    background-color: #111827;
+}
+
 .profile p{
     margin: 0%;
     margin-right: 10px;
@@ -43,7 +49,7 @@
 }
 
 button{
-    background-color: #1e1e22 !important;
+    background-color: #111827 !important;
     color: white !important;
 }
 

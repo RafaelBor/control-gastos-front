@@ -11,10 +11,19 @@
 
 <mat-toolbar class="navbar">
    <div class="profile">
-      <button class="icon-profile" mat-mini-fab>
+      <!-- <button class="icon-profile" mat-mini-fab>
          <mat-icon>menu</mat-icon>
-       </button>
-      <p>Rafael Borbon</p>
+       </button> -->
+       <div class="profile-menu">
+         <button mat-mini-fab class="icon-profile" [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+         </button>
+         <mat-menu #menu="matMenu">
+            <button mat-menu-item>Item 1</button>
+            <button (click)="onLogout()" mat-menu-item>Cerrar Sesion</button>
+         </mat-menu>
+      </div>
+      <p>{{user()?.name | titlecase }} {{user()?.lastname | titlecase}}</p>
    </div>
 
    <div class="menu">

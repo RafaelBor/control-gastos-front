@@ -1,16 +1,16 @@
 <div class="container-home">
     <div class="row">
         <div class="col-12">
-            <app-filter />
+            <app-filter (onSendDataFilter)="getDataFilter($event)" (onOpenDownload)="openDownload()" />
         </div>
         <div class="col-12">
-            <app-totals />
+            <app-totals [month]="month" />
         </div>
-        <div class="col-12 col-md-5 mt-4 order-2 order-md-1">
-            <app-categories />
+        <div class="col-12 col-md-5 mt-4  order-md-1">
+            <app-expenses-list [expenses]="expenses" />
         </div>
-        <div class="col-12 col-md-7 mt-4 order-1 order-md-2">
-            <app-charts />
+        <div class="col-12 col-md-7 mt-4  order-md-2">
+            <app-charts [expenses]="expenses" />
         </div>
         
     </div>

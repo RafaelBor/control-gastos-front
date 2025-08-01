@@ -1,0 +1,126 @@
+<!-- <div class="verify-container">
+  <mat-card class="verify-card">
+    <h2>Verificación de correo</h2>
+    <p>Hemos enviado un código de verificación a <strong>{{ email }}</strong></p>
+
+    <form [formGroup]="verifyForm" (ngSubmit)="verifyCode()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Código de verificación</mat-label>
+        <input matInput formControlName="code" maxlength="6" autocomplete="off" />
+        <mat-error *ngIf="verifyForm.get('code')?.hasError('required')">El código es requerido</mat-error>
+      </mat-form-field>
+
+      <button mat-button class="d-block w-100 mt-2" mat-raised-button>
+        Verificar
+      </button>
+
+    </form>
+
+    <mat-error *ngIf="errorMessage" class="error-text">{{ errorMessage }}</mat-error>
+    <mat-hint *ngIf="successMessage" class="success-text">{{ successMessage }}</mat-hint>
+  </mat-card>
+</div> -->
+
+<div class="verify-container">
+  <mat-card class="verify-card">
+    <mat-card-header class="card-header">
+
+    </mat-card-header>
+
+    <!-- Título y subtítulo separados del header -->
+    <div class="brand-section">
+      <div class="brand-container">
+        <h1 class="brand-title">
+          Verificación de <span class="brand-accent">Correo</span>
+        </h1>
+        <p class="brand-subtitle">
+          Hemos enviado un código de verificación a<br>
+          <strong class="email-highlight">{{ email }}</strong>
+        </p>
+      </div>
+    </div>
+
+    <mat-card-content class="card-content">
+      <form [formGroup]="verifyForm" (ngSubmit)="verifyCode()" class="verify-form">
+        <!-- Verification code field -->
+        <div class="form-field">
+          <mat-form-field appearance="outline" class="custom-form-field">
+            <mat-label>Código de Verificación</mat-label>
+            <mat-icon matPrefix class="field-icon">verified_user</mat-icon>
+            <input 
+              matInput 
+              formControlName="code" 
+              placeholder="000000"
+              maxlength="6" 
+              autocomplete="off"
+              class="code-input">
+            @if (verifyForm.get('code')?.hasError('required')) {
+              <mat-error>El código es requerido</mat-error>
+            }
+            @if (verifyForm.get('code')?.hasError('minlength')) {
+              <mat-error>El código debe tener 6 dígitos</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <!-- Messages -->
+        @if (errorMessage) {
+          <div class="message-container error-container">
+            <mat-icon class="message-icon">error</mat-icon>
+            <p class="error-message">{{ errorMessage }}</p>
+          </div>
+        }
+
+        @if (successMessage) {
+          <div class="message-container success-container">
+            <mat-icon class="message-icon">check_circle</mat-icon>
+            <p class="success-message">{{ successMessage }}</p>
+          </div>
+        }
+
+        <!-- Verify button -->
+        <div class="form-field">
+          <button 
+            mat-raised-button 
+            type="submit"
+    
+            class="verify-button">
+   
+              <mat-icon class="button-icon">verified_user</mat-icon>
+              Verificar Código
+         
+          </button>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider">
+          <span class="divider-text">¿No recibiste el código?</span>
+        </div>
+
+        <!-- Resend code button -->
+        <div class="form-field">
+          <button 
+            type="button"
+            mat-stroked-button 
+            class="resend-button">
+              <mat-icon class="button-icon">refresh</mat-icon>
+              Reenviar Código
+
+          </button>
+        </div>
+
+        <!-- Back to login button -->
+        <div class="form-field">
+          <button 
+            [routerLink]="['/auth/login']" 
+            mat-button 
+            class="back-button">
+            <mat-icon class="button-icon">arrow_back</mat-icon>
+            Volver al Login
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

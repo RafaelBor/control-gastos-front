@@ -1,10 +1,23 @@
 .container {
     width: 100%;
     padding: 15px;
+
 }
 
 .container-title{
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+
+  .brand-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    margin: 0 0 0.5rem 0;
+ }
+
+.brand-accent {
+        color: #a855f7;
 }

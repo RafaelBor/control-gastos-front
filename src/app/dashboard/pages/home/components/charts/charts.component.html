@@ -1,7 +1,11 @@
 <div class="container-general">
     <p class="title">Grafica de gastos</p>
     <mat-divider></mat-divider>
-    <div class="container-charts">
+    <div *ngIf="noData;">
+        <p>No hay información disponible para mostrar en el gráfico.</p>
+    </div>
+    <div #chartContent class="container-charts">
         <canvas id="myChart">{{chart}}</canvas>
     </div>
+
 </div>

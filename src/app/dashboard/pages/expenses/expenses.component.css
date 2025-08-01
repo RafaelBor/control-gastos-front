@@ -1,10 +1,14 @@
 .expenses-header{
     display: flex;
-    align-items: center;
+    align-items: center !important;
 }
 
 .expenses-header mat-form-field{
     margin-right: 10px;
+}
+
+mat-form-field{
+
 }
 
 mat-card-content{

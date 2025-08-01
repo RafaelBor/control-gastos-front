@@ -21,21 +21,21 @@
         <mat-grid-tile class="col-12 col-md-4">
             <div class="total-box">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="payments"></mat-icon>
-                <span>$22.000</span>
+                <span>${{ (month()?.salary_montly || 0) | number:'1.0-0' }}</span>
                 <h3>Sueldo total</h3>
             </div>
         </mat-grid-tile>
         <mat-grid-tile class="col-12 col-md-4">
             <div class="total-box">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="credit_card"></mat-icon>
-                <span>$22.000</span>
+                <span>${{ (month()?.expenses_montly || 0) | number:'1.0-0' }}</span>
                 <h3>Gastos totales</h3>
             </div>
         </mat-grid-tile>
         <mat-grid-tile class="col-12 col-md-4">
             <div class="total-box">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="savings"></mat-icon>
-                <span>$22.000</span>
+                <span>${{ (month()?.savings_montly || 0) | number:'1.0-0' }}</span>
                 <h3>Ahorros</h3>
             </div>
         </mat-grid-tile>

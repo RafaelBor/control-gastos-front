@@ -5,6 +5,14 @@ mat-form-field{
 mat-label{
     color: #8639e4;
 }
+mat-expansion-panel-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+mat-accordion {
+    background-color: #8939da;
+}
 
 button{
     background-color: #8639e4 !important;
