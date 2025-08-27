@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Cambia esto si el nombre de tu proyecto en dist/ es diferente
-const DIST_FOLDER = path.join(__dirname, 'dist/control-gastos-front');
+const DIST_FOLDER = path.join(__dirname, 'dist/control-gastos-front/browser');
 
 app.use(express.static(DIST_FOLDER));
 
