@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
   notVerified: boolean = false;
   deferredPrompt: any;
   showInstallButton = false;
+  showIosInstallInstructions: boolean = false;
   private readonly authService = inject(AuthService)
   private readonly router = inject(Router)
 
@@ -50,6 +51,13 @@ export class LoginComponent implements OnInit {
       this.deferredPrompt = event;
       this.showInstallButton = true; // Muestra tu botón personalizado
     });
+
+  const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+  const isInStandaloneMode = ('standalone' in window.navigator) && (window.navigator['standalone']);
+
+    if (isIos && !isInStandaloneMode) {
+      this.showIosInstallInstructions = true;
+    }
   }
 
   onSubmit() {
