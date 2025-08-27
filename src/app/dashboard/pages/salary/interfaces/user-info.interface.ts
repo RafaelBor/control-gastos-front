@@ -1,6 +1,6 @@
 export interface UserInfo{
     id: string,
-    salary: number,
+    salary: string,
     saving: number
 
 }

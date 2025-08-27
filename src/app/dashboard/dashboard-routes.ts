@@ -16,6 +16,10 @@ export const dashboradRoutes: Routes = [
             {
                 path: 'salary',
                 loadComponent: () => import('./pages/salary/salary.component')
+            },
+            {
+                path: 'change-password',
+                loadComponent: () => import('./pages/change-passaword/change-passaword.component').then(m => m.ChangePassawordComponent)
             }
         ],
     }

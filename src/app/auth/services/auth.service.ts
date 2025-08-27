@@ -13,10 +13,10 @@ import { checkTokenResponse } from '../interfaces/check-token.interface';
 export class AuthService {
 
   private readonly baseUrl: string = environment.baseUrl;
-  private http = inject(HttpClient)
+  private readonly http = inject(HttpClient)
 
-  private _currentUser = signal< User | null >(null)
-  private _authStatus = signal<AuthStatus>(AuthStatus.cheking)
+  private readonly _currentUser = signal< User | null >(null)
+  private readonly _authStatus = signal<AuthStatus>(AuthStatus.cheking)
 
   public currentUser = computed(() => this._currentUser());
   public authStatus = computed(() => this._authStatus())
@@ -113,6 +113,27 @@ export class AuthService {
     return storedUser ? JSON.parse(storedUser) as User : null;
   }
 
+  changePassword(request: {curretPassword: string, newPassword: string}){
+    const url = `${this.baseUrl}/auth/change-password`;
+
+    return this.http.patch(url, request)
+    .pipe(
+      catchError(err => {
+        return throwError(() => err.error.message)
+      })
+    ) 
+  }
+
+  requestEmailForgot(request: {email: string}){
+    const url = `${this.baseUrl}/auth/request-password-reset`;
+
+    return this.http.post(url, request)
+    .pipe(
+      catchError(err => {
+        return throwError(() => err.error.message)
+      })
+    ) 
+  }
 
 
   logout(){

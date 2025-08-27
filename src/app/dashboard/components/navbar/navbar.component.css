@@ -57,6 +57,11 @@ button{
     border-bottom: #8639e4 solid 2px;
 }
 
+.mat-mdc-menu-content{
+    background-color: red !important;
+    padding: 0% !important;
+}
+
 @media (max-width: 576px) {
     .navbar{
         display: block;

@@ -19,7 +19,7 @@
             <mat-icon>menu</mat-icon>
          </button>
          <mat-menu #menu="matMenu">
-            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item [routerLink]="['/dashboard/change-password']">Cambiar contraseña</button>
             <button (click)="onLogout()" mat-menu-item>Cerrar Sesion</button>
          </mat-menu>
       </div>

@@ -1,15 +1,18 @@
 .expenses-header{
-    display: flex;
+    display: block;
     align-items: center !important;
 }
+
+.second-button{
+    margin-left: 10px;
+}
+
+
 
 .expenses-header mat-form-field{
     margin-right: 10px;
 }
 
-mat-form-field{
-
-}
 
 mat-card-content{
     display: flex;
@@ -31,9 +34,14 @@ button{
 }
 
 @media (max-width: 576px) {
-    .expenses-header{
+    .expenses-header {
         display: block;
 
+    }
+
+    .second-button{
+        margin-top: 10px;
+        margin-left: 0px;
     }
 
     .expenses-header mat-form-field{
@@ -45,4 +53,4 @@ button{
         width: 100%;
         margin-top: 0px;
     }
-  }
+}

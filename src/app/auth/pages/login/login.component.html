@@ -156,7 +156,6 @@
             Registrarme
           </button>
         </div>
-
         @if (notVerified) {
           <div class="form-field">
             <button 
@@ -168,24 +167,23 @@
             </button>
           </div>
         }
+       @if (showInstallButton) {
+        <div class="form-field">
+         <button mat-stroked-button  (click)="installApp()" class="register-button">
+          Instalar aplicación
+         </button>
+        </div>
+        }
       </form>
     </mat-card-content>
 
     <mat-card-actions class="card-actions">
       <button 
-        [routerLink]="['/auth/forgot-password']" 
         mat-button 
         class="forgot-password">
         ¿Olvidaste tu contraseña?
       </button>
-      <div class="test-mode">
-        <button 
-          [routerLink]="['/auth/verificar-email']" 
-          mat-button 
-          class="test-button">
-          Modo de prueba
-        </button>
-      </div>
+
     </mat-card-actions>
   </mat-card>
 

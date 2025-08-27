@@ -1,15 +1,17 @@
 <div class="container-general expenses-header">
         <mat-form-field appearance="outline">
-        <mat-label>Seleccionar fecha</mat-label>
-        <input matInput [matDatepicker]="picker" (dateChange)="onDateChange()" [(ngModel)]="selectedDate">
-        
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+            <mat-label>Seleccionar fecha</mat-label>
+            <input matInput [matDatepicker]="picker" (dateChange)="onDateChange()" [(ngModel)]="selectedDate">
+            
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+       </mat-form-field>
 
       
-        <button mat-raised-button (click)="addExpense()">Registrar gasto</button>
-        <button class="mt-2" mat-raised-button (click)="addCategory()">Agregar categoria</button>
+      <div class="actions">
+        <button mat-raised-button (click)="addExpense()">Registrar gasto <mat-icon class="button-icon">point_of_sale</mat-icon></button>
+        <button  mat-raised-button class="second-button" (click)="addCategory()">Agregar categoria <mat-icon class="button-icon">add_2</mat-icon></button>
+      </div>
       
 </div>
 
@@ -38,7 +40,7 @@
             </mat-card-content>
             <mat-card-actions>
                 <button mat-button (click)="editExpense(expense.id)">Actualizar</button>
-                <button mat-button>Eliminar</button>
+                <button mat-button (click)="deleteExpense(expense.id)">Eliminar</button>
             </mat-card-actions>
         </mat-card>
     </div>

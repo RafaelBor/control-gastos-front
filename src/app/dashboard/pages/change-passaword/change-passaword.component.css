@@ -1,0 +1,8 @@
+button{
+    background-color: #8939da !important;
+}
+
+mat-error{
+    color: black !important;
+    font-weight: bold;
+}

@@ -61,7 +61,6 @@ export class AddCategoryComponent implements OnInit{
         this.categories = res;
       },
       error: err => {
-        console.log(err)
       }
     })
   }
@@ -78,7 +77,6 @@ export class AddCategoryComponent implements OnInit{
           this.onListCategories();
         },
         error: err => {
-          console.log(err)
         }
       })
     }else{
@@ -88,7 +86,6 @@ export class AddCategoryComponent implements OnInit{
           this.onListCategories();
         },
         error: err => {
-          console.log(err)
         }
       })
     }
@@ -96,7 +93,6 @@ export class AddCategoryComponent implements OnInit{
 
   editCategory(category: Category) {
   this.selectedCategory = category;
-  console.log(this.selectedCategory)
   this.categoryForm.patchValue({
     name: category.name,
     // Si tienes color o ícono también los puedes cargar aquí

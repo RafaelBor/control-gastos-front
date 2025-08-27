@@ -83,8 +83,6 @@ export class DownloadReportComponent {
     const startDate = this.formatDate(start);
     const endDate = this.formatDate(end);
 
-    console.log('start:', startDate); // Ej: 2025-07-01
-    console.log('end:', endDate);     // Ej: 2025-09-01
 
     this.homeService.downloadReport(startDate, endDate).subscribe({
       next: res => {

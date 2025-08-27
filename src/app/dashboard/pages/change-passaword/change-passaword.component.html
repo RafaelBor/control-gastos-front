@@ -1,0 +1,33 @@
+<div class="container-general">
+    <h2 class="text-center">Cambiar contraseña</h2>
+    <form [formGroup]="form" class="row m-2">
+        <mat-form-field appearance="outline">
+            <mat-label>Contraseña actual:</mat-label>
+            <input type="password" formControlName="currentPassword" matInput> 
+       </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nueva contraseña:</mat-label>
+            <input type="password" formControlName="newPassword" matInput> 
+       </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Confirmar contraseña:</mat-label>
+            <input type="password" formControlName="confirmPassword" matInput> 
+       </mat-form-field>
+       @if(form.hasError('passwordMismatch') && form.get('confirmPassword')?.touched){
+        <mat-error class="text-center">
+                Las contraseñas no coinciden.
+        </mat-error>
+       }
+       @if (isMessageError) {
+        <mat-error class="text-center">
+            {{messageError}}
+        </mat-error>
+       }
+  
+       <button mat-raised-button (click)="changePassword()">
+            Guardar 
+       </button>
+    </form>
+</div>

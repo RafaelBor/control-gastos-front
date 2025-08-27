@@ -20,6 +20,7 @@ body h1 {
     background-color: #b089d8;
     padding: 10px;
     border-radius: 2%;
+    height: 100% !important;
 }
 
  .logo-container {

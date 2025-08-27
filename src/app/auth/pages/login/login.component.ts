@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
@@ -26,11 +26,13 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   hide = true;
   errorMessage: string | null = null
   notVerified: boolean = false;
+  deferredPrompt: any;
+  showInstallButton = false;
   private readonly authService = inject(AuthService)
   private readonly router = inject(Router)
 
@@ -42,14 +44,20 @@ export class LoginComponent {
     });
   }
 
+  ngOnInit(): void {
+      window.addEventListener('beforeinstallprompt', (event: Event) => {
+      event.preventDefault(); // Previene que el navegador lo muestre automáticamente
+      this.deferredPrompt = event;
+      this.showInstallButton = true; // Muestra tu botón personalizado
+    });
+  }
+
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
       const {email, password} = this.loginForm.value;
       this.authService.login(email, password).subscribe({
         next: () => this.router.navigateByUrl('/dashboard/home'),
         error: (error) => {
-          console.log({loginerror: error})
           if(error.statusCode === 400){
             this.errorMessage = 'La contraseña debe de tener mayusculas, minusculas y numeros.'
           }
@@ -62,6 +70,21 @@ export class LoginComponent {
           }
         }
       })
+    }
+  }
+
+    installApp(): void {
+    if (this.deferredPrompt) {
+      this.deferredPrompt.prompt();
+      this.deferredPrompt.userChoice.then((choiceResult: any) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('Usuario aceptó la instalación');
+        } else {
+          console.log('Usuario canceló la instalación');
+        }
+        this.deferredPrompt = null;
+        this.showInstallButton = false;
+      });
     }
   }
 }

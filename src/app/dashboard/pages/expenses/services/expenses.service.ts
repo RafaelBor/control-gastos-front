@@ -89,4 +89,16 @@ export class ExpensesService {
                     })
                 )
     }
+
+    deleteExpense(idExpense: string){
+         const url = `${this.baseUrl}/expenses/${idExpense}`;
+        return this.http.delete<any>(url, {})
+            .pipe(
+                map((res) => res.data),
+                catchError(err => {
+                    console.log(err)
+                    return throwError(() => new Error('Error al obtener los datos del servidor'));
+                })
+            )
+    }
 }

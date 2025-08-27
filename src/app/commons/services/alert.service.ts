@@ -65,7 +65,7 @@ export class AlertService {
       text: message,
       icon: 'question',
       showCancelButton: true,
-      confirmButtonText: 'Sí',
+      confirmButtonText: 'Aceptar',
       cancelButtonText: 'Cancelar',
       background: '#b089d8'
     });

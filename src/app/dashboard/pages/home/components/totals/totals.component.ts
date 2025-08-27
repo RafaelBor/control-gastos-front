@@ -19,7 +19,6 @@ export class TotalsComponent implements OnInit {
   public month = input<Month | null >();
 
   ngOnInit(): void {
-    console.log('mno', this.month)
     this.adjustGrid(window.innerWidth);
   }
 

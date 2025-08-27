@@ -64,7 +64,6 @@ export default class RegisterComponent {
       return;
     }
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
       this.authService.register(this.registerForm.value).subscribe({
         next: res => {
           this.router.navigate(['/auth/verificar-email'], {
@@ -72,7 +71,6 @@ export default class RegisterComponent {
           }); 
         },
         error: err => {
-          console.log(err)
           this.alertService.error('Hubo un error al realizar el registro');
         }
       })

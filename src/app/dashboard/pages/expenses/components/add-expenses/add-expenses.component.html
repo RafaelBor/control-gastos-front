@@ -11,8 +11,16 @@
         <div class="mt-3 row">
             <mat-form-field appearance="outline">
                 <mat-label>Cantidad:</mat-label>
-                <input placeholder="0" matInput type="number" formControlName="expense"  />
+                <input placeholder="0" matInput type="text" maxlength="8" formControlName="expense"  (input)="onExpenseInput($event)"  />
+
+            @if (expenseForm.get('expense')?.hasError('max')) {
+                <mat-error>
+                    Máximo 6 dígitos permitidos
+                </mat-error>
+            }
             </mat-form-field>
+         
+       
     
             <mat-form-field appearance="outline">
                 <mat-label>Categoria:</mat-label>

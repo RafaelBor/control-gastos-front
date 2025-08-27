@@ -17,7 +17,8 @@ import { ExpensesService } from '../../services/expenses.service';
 import { CategoriesService } from '../../../home/services/category.service';
 import { Category } from '../../../home/interfaces/category.interface';
 import { AlertService } from '../../../../../commons/services/alert.service';
-import { Expense } from '../../../home/interfaces/expense.interface';
+import { CommonModule, CurrencyPipe } from '@angular/common';
+import { formatCurrencyInput } from '../../../../../commons/utils/format_currency';
 
 @Component({
   selector: 'app-add-expenses',
@@ -32,8 +33,10 @@ import { Expense } from '../../../home/interfaces/expense.interface';
      MatDialogActions,
      MatDialogClose,
      MatSelectModule,
-     ReactiveFormsModule
+     ReactiveFormsModule,
+     CommonModule
   ],
+  providers: [CurrencyPipe],
   templateUrl: './add-expenses.component.html',
   styleUrl: './add-expenses.component.css'
 })
@@ -50,12 +53,13 @@ export class AddExpensesComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private  readonly data: any,
     private readonly fb: FormBuilder,
     private  readonly dialogRef: MatDialogRef<AddExpensesComponent>,
-    private  readonly alertService: AlertService
+    private  readonly alertService: AlertService,
+    private  readonly currencyPipe: CurrencyPipe
   ){
     this.expenseForm = this.fb.group({
-        expense: [null, [Validators.required]],
+        expense: [null, [Validators.required, Validators.max(999999)]],
         categoryId: ['', [Validators.required]],
-        detail: ['', [Validators.required]],
+        detail: [''],
         date: [this.data.date, [Validators.required]],
     });
   }
@@ -67,11 +71,24 @@ export class AddExpensesComponent implements OnInit {
 
 
   onSaveExpense(){
-    console.log(this.expenseForm.value)
-    this.expensesService.saveExpense(this.expenseForm.value).subscribe({
+    if(this.expenseForm.invalid){
+      this.expenseForm.markAllAsTouched();
+      return;
+    }
+
+    const formData = {...this.expenseForm.value}
+
+    const numericExpense = parseFloat(
+      (formData.expense + '').replace(/,/g, '')
+    );
+
+    formData.expense = numericExpense;
+
+    this.expensesService.saveExpense(formData).subscribe({
       next: res => {
         this.alertService.success('Se realizo el registro correctamente.')
         this.dialogRef.close();
+        this.expenseForm.reset()
       },
       error: err => {
         this.alertService.error('Hubo un error al realizar el registro');
@@ -113,7 +130,14 @@ export class AddExpensesComponent implements OnInit {
   }
 
   onUpdateExpense(){
-    this.expensesService.updateExpense(this.expenseForm.value, this.data.idExpense).subscribe({
+    const formData = {...this.expenseForm.value}
+
+    const numericExpense = parseFloat(
+      (formData.expense + '').replace(/,/g, '')
+    );
+
+    formData.expense = numericExpense;
+    this.expensesService.updateExpense(formData, this.data.idExpense).subscribe({
       next: res => {
         this.alertService.success('Se realizo la actualizacion correctamente.')
         this.dialogRef.close();
@@ -125,5 +149,10 @@ export class AddExpensesComponent implements OnInit {
     })
   }
 
+  onExpenseInput(event: Event) {
+    formatCurrencyInput(event, this.currencyPipe, (realValue, formatted) => {
+      this.expenseForm.get('expense')?.setValue(formatted); // Guardar como número
+    });
+  }
 
 }
