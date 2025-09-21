@@ -9,7 +9,7 @@
                     <input placeholder="Escribe el nombre de la categoria" matInput formControlName="name"  />
                 </mat-form-field>
 
-                <button mat-button [disabled]="categoryForm.invalid" (click)="sendCategory()">Guardar</button>
+                <button mat-button [disabled]="categoryForm.invalid" [disabled]="isSubmitting" (click)="sendCategory()">Guardar</button>
                 @if (selectedCategory) {
                   <button class="mt-2" mat-button (click)="resetForm()">Cancelar edición</button>
                 }

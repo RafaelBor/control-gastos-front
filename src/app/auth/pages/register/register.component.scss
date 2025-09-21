@@ -222,7 +222,7 @@
 
           // Error message
           .error-message {
-            color: #ef4444;
+            color: #ef4444 !important;
             font-size: 0.875rem;
             margin-top: 0.5rem;
             margin-bottom: 0;
@@ -354,6 +354,12 @@
   }
 }
 
+     .error-message {
+            color: #ef4444 !important;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+          }
 @media (max-width: 640px) {
   .register-container {
     .register-card {
