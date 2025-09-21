@@ -30,6 +30,7 @@ export default class RegisterComponent {
   registerForm: FormGroup;
   hidePassword = true;
   hideConfirmPassword = true;
+  errorMessage: string | null = null
   private readonly authService = inject(AuthService)
   private  readonly alertService = inject(AlertService) 
   private readonly router = inject(Router)
@@ -71,7 +72,13 @@ export default class RegisterComponent {
           }); 
         },
         error: err => {
-          this.alertService.error('Hubo un error al realizar el registro');
+          console.log(err)
+           if(err.statusCode === 400){
+            this.errorMessage = 'La contraseña debe de tener mayusculas, minusculas y numeros.'
+          }else{
+            this.alertService.error('Hubo un error al realizar el registro');
+          }
+          
         }
       })
       // Aquí iría la lógica de registro

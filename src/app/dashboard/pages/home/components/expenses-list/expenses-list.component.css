@@ -28,12 +28,26 @@
 }
 
 .prueba{
-    font-size: 10px !important;
-   
+    font-size: 12px !important;
+}
+
+.total-all-text{
+    font-size: 12px !important;
+    font-weight: bold !important;
 }
 
 .total-expense{
     font-size: 16px;
     font-weight: bold;
     margin: 0;
+}
+
+.total-all-expense{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.total-container{
+    background-color: #8939da;
 }

@@ -48,6 +48,7 @@ export class AddExpensesComponent implements OnInit {
   expenseForm: FormGroup;
   isUpdate = false;
   categories: Category[] = []
+  isSubmitting = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private  readonly data: any,
@@ -75,7 +76,7 @@ export class AddExpensesComponent implements OnInit {
       this.expenseForm.markAllAsTouched();
       return;
     }
-
+    this.isSubmitting = true;
     const formData = {...this.expenseForm.value}
 
     const numericExpense = parseFloat(
@@ -93,6 +94,9 @@ export class AddExpensesComponent implements OnInit {
       error: err => {
         this.alertService.error('Hubo un error al realizar el registro');
         console.log(err)
+      },
+      complete: () => {
+        this.isSubmitting = false;
       }
     })
   }
