@@ -3,6 +3,7 @@ import { isAuthenticatedGuard } from './auth/guards/is-authenticated.guard';
 import { isNotAuthenticationGuard } from './auth/guards/is-not-authentication.guard';
 
 export const routes: Routes = [
+    //
     {
         path: 'auth',
         canActivate: [isNotAuthenticationGuard],
