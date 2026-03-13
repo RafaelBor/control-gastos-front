@@ -15,6 +15,7 @@ import { CategoriesService } from '../../../home/services/category.service';
 import { Category } from '../../../home/interfaces/category.interface';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { AlertService } from '../../../../../commons/services/alert.service';
 
 @Component({
   selector: 'app-add-category',
@@ -40,7 +41,9 @@ export class AddCategoryComponent implements OnInit{
   categories: Category[] = []
   categoryForm: FormGroup;
   selectedCategory: Category | null = null;
+  isSubmitting = false;
   private  readonly categoriesService = inject(CategoriesService)
+  private  readonly alertService = inject(AlertService)
 
 
   ngOnInit(): void {
@@ -75,17 +78,25 @@ export class AddCategoryComponent implements OnInit{
         next: res => {
           this.resetForm();
           this.onListCategories();
+          this.alertService.success('Se realizo la actualizacion correctamente.')
         },
         error: err => {
+          this.alertService.error('Hubo un error al actualizar el registro');
         }
       })
     }else{
+      this.isSubmitting = true;
       this.categoriesService.addCategory(categoryData).subscribe({
         next: res => {
           this.resetForm();
           this.onListCategories();
+          this.alertService.success('Se realizo el registro correctamente.')
         },
         error: err => {
+          this.alertService.error('Hubo un error al realizar el registro');
+        },
+        complete: () => {
+          this.isSubmitting = false;
         }
       })
     }

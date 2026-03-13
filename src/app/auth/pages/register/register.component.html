@@ -214,6 +214,10 @@
           }
         </div>
 
+           @if (errorMessage) {
+            <p class="error-message">{{errorMessage}}</p>
+          }
+        
         <!-- Terms checkbox -->
         <div class="form-field checkbox-field">
           <mat-checkbox formControlName="terms" class="custom-checkbox" required>

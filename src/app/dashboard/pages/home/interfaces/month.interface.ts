@@ -11,4 +11,5 @@ export interface ExpensesByMonth {
     categoryName: string;
     color:        string;
     totalExpense: string;
+    checked?: boolean
 }

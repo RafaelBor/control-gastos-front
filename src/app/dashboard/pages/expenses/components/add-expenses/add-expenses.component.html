@@ -43,7 +43,7 @@
     <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close >Cancelar</button>
     @if (isUpdate === false) {
-        <button mat-button  cdkFocusInitial (click)="onSaveExpense()">Guardar</button>
+        <button mat-button [disabled]="isSubmitting"  cdkFocusInitial (click)="onSaveExpense()">Guardar</button>
     }@else {
         <button mat-button  cdkFocusInitial (click)="onUpdateExpense()">Actualizar</button>
     }

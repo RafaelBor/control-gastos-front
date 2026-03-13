@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { AlertService } from '../../../commons/services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -36,11 +37,12 @@ export class LoginComponent implements OnInit {
   showIosInstallInstructions: boolean = false;
   private readonly authService = inject(AuthService)
   private readonly router = inject(Router)
+  private  readonly alertService = inject(AlertService)
 
   constructor(private readonly fb: FormBuilder) {
     this.loginForm = this.fb.group({
-      email: ['rafael@gmail.com', [Validators.required, Validators.email]],
-      password: ['Rafael1', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       rememberMe: [false]
     });
   }
@@ -69,12 +71,14 @@ export class LoginComponent implements OnInit {
           if(error.statusCode === 400){
             this.errorMessage = 'La contraseña debe de tener mayusculas, minusculas y numeros.'
           }
-          if(error.statusCode === 401){
+          else if(error.statusCode === 401){
             this.errorMessage = 'La contraseña o el correo son invalidos.'
           }
-          if(error.statusCode === 403){
+          else if(error.statusCode === 403){
             this.errorMessage = 'La cuenta no esta verificada, necesita verificar su correo para acceder.'
             this.notVerified = true;
+          }else{
+            this.alertService.error('Hubo un error en el sistema, intentalo mas tarde.');
           }
         }
       })

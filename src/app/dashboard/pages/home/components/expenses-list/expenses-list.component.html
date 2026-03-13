@@ -6,15 +6,32 @@
     </div>
     <mat-divider></mat-divider>
     <mat-list role="list">
-        @for (expense of expenses(); track $index) {
-            <div class="category">
-                <mat-list-item class="prueba" role="listitem">
-                    {{expense.categoryName}}
-                </mat-list-item>
-                <p class="total-expense">${{expense.totalExpense | number:'1.2-2'}}</p>
-            </div>
-        }
-      </mat-list>
+    @for (expense of expensesWithCheck(); track $index;) {
+      <div class="category">
+        <mat-list-item class="prueba" role="listitem">
+          <mat-checkbox
+            [checked]="expense.checked"
+            (change)="toggleCheck($index)"
+            class="custom-checkbox"
+          >
+            {{ expense.categoryName }}
+          </mat-checkbox>
+        </mat-list-item>
+        <p class="total-expense">
+          ${{ expense.totalExpense | number:'1.2-2' }}
+        </p>
+      </div>
+    }
+
+    <div class="category total-container">
+      <mat-list-item class="total-all-text" role="listitem">
+        Total:
+      </mat-list-item>
+      <p class="total-all-expense">
+        ${{ totalSelectedExpense() | number:'1.2-2' }}
+      </p>
+    </div>
+  </mat-list>
 
     
 </div>

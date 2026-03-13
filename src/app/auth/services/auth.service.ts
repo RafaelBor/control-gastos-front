@@ -46,7 +46,7 @@ export class AuthService {
       .pipe(
         map(({data}) => data),
         catchError(err => {
-          return throwError(() => err.error.message)
+          return throwError(() => err.error)
 
         })
       ) 

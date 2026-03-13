@@ -13,6 +13,20 @@ body h1 {
 }
 
 
+.custom-checkbox .mdc-checkbox__background {
+  background-color: #a855f7 !important;
+  border-color: #a855f7 !important;
+}
+
+.custom-checkbox.mat-mdc-checkbox.mat-accent .mdc-checkbox--selected .mdc-checkbox__background {
+  background-color: #a855f7 !important;
+  border-color: #a855f7 !important;
+}
+
+.custom-checkbox .mdc-checkbox__checkmark-path {
+  stroke: white !important;
+}
+
 
 
 
